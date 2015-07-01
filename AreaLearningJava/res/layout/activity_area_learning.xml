@@ -377,4 +377,14 @@
         android:layout_alignParentLeft="true"
         android:text="@string/save_adf" />
 
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:id="@+id/markWaypoint"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="@string/mark_waypoint"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/saveAdf"
+        android:layout_toEndOf="@+id/saveAdf" />
+
 </RelativeLayout>

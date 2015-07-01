@@ -53,7 +53,7 @@ import com.projecttango.experiments.javaarealearning.SetADFNameDialog.SetNameCom
  * delegated to the {@link ALRenderer} class.
  */
 public class AreaLearningActivity extends Activity implements View.OnClickListener,
-        SetNameCommunicator {
+        SetNameCommunicator, WaypointNameDialog.WaypiontNameCommunicator {
 
     private static final String TAG = AreaLearningActivity.class.getSimpleName();
     private static final int SECONDS_TO_MILLI = 1000;
@@ -84,6 +84,7 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
     private TextView mAdf2StartPoseDeltaTextView;
 
     private Button mSaveAdf;
+    private Button mMarkWaypoint;
     private Button mFirstPersonButton;
     private Button mThirdPersonButton;
     private Button mTopDownButton;
@@ -107,7 +108,9 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
     private boolean mIsAutoMode;
     private boolean mIsConstantSpaceRelocalize;
     private String mCurrentUUID;
-    /**Describes the adf file loaded for localization.*/
+    /**
+     * Describes the adf file loaded for localization.
+     */
     private TangoAreaDescriptionMetaData mAdfMetadata;
 
     private ALRenderer mRenderer;
@@ -155,6 +158,7 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
         mGLView = (GLSurfaceView) findViewById(R.id.gl_surface_view);
 
         mSaveAdf = (Button) findViewById(R.id.saveAdf);
+        mMarkWaypoint = (Button) findViewById(R.id.markWaypoint);
         mUUIDTextView = (TextView) findViewById(R.id.uuid);
 
         mSaveAdf.setVisibility(View.GONE);
@@ -207,6 +211,10 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
             mSaveAdf.setVisibility(View.VISIBLE);
             mSaveAdf.setOnClickListener(this);
         }
+        //don't show until coordinates are available once localized
+        mMarkWaypoint.setVisibility(View.INVISIBLE);
+        mMarkWaypoint.setOnClickListener(this);
+
         if (mIsAutoMode) {
             // Set learning mode to config.
             mConfig.putBoolean(TangoConfig.KEY_BOOLEAN_LEARNINGMODE, true);
@@ -384,6 +392,28 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
         });
     }
 
+    /**
+     * shows a dialog to record the current coordinates by a name given.
+     */
+    private void markWaypoint() {
+        Bundle bundle = new Bundle();
+        TangoPoseData poseData = devicePoseFromMemory();
+        if (poseData != null) {
+            float[] translationAsFloats = poseData.getTranslationAsFloats();
+            bundle.putFloatArray(WaypointNameDialog.TRANSLATION_KEY, translationAsFloats);
+        }
+        FragmentManager manager = getFragmentManager();
+        WaypointNameDialog setADFNameDialog = new WaypointNameDialog();
+        setADFNameDialog.setArguments(bundle);
+        setADFNameDialog.show(manager, "WaypointNameDialog");
+    }
+
+    @Override
+    public void onWaypointName(String name, float[] translationAsFloats) {
+        Log.i(TAG, "Waypiont named " + name + " at " + translationAsFloats[TangoPoseData.INDEX_TRANSLATION_X] + "," + translationAsFloats[TangoPoseData.INDEX_TRANSLATION_Y]);
+
+    }
+
     private void saveAdf() {
         showSetNameDialog();
     }
@@ -455,6 +485,10 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
             if (pose.statusCode == TangoPoseData.POSE_INITIALIZING) {
                 mAwarenessTextView.setText(getString(R.string.awareness_memory_initializing));
             } else if (pose.statusCode == TangoPoseData.POSE_VALID) {
+                if (mMarkWaypoint.getVisibility() != View.VISIBLE) {
+                    mMarkWaypoint.setVisibility(View.VISIBLE);
+                }
+
                 String adfName = new String(mAdfMetadata.get(TangoAreaDescriptionMetaData.KEY_NAME));
                 mAwarenessTextView.setText(getString(R.string.awareness_memory_valid, adfName));
             } else if (pose.statusCode == TangoPoseData.POSE_INVALID) {
@@ -489,7 +523,8 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
         }
     }
 
-    /**accesses the pose, if available, that describes the from from the device as it relates to the area description file.
+    /**
+     * accesses the pose, if available, that describes the from from the device as it relates to the area description file.
      *
      * @return the pose or null if not available
      */
@@ -580,11 +615,15 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
             case R.id.saveAdf:
                 saveAdf();
                 break;
+            case R.id.markWaypoint:
+                markWaypoint();
+                break;
             default:
                 Log.w(TAG, "Unknown button click");
                 return;
         }
     }
+
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -626,4 +665,6 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
             }
         }).start();
     }
+
+
 }
