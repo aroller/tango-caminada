@@ -2,6 +2,8 @@ package com.aawhere.jts.place;
 
 import com.vividsolutions.jts.geom.Point;
 
+import java.io.Serializable;
+
 /**
  * A point that describes an area or a spot within another area. The coordinate system used is
  * defined by the Point's SRID.
@@ -11,7 +13,7 @@ import com.vividsolutions.jts.geom.Point;
  * <p/>
  * Created by aroller on 7/2/15.
  */
-public class Place {
+public class Place implements Serializable {
 
     /**
      * Uniquely identifies this place within the scope of the map or ADF for which this place

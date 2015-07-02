@@ -45,6 +45,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -131,7 +132,7 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
     /**
      * The repository of places recorded during this session.
      */
-    private MapService mapService = new MapService();
+    private MapService mapService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -502,11 +503,20 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
                     mMarkWaypoint.setVisibility(View.VISIBLE);
                 }
 
+                if (mapService == null) {
+                    //load the map service using the uuid of the localized ADF
+                    final String uuid = new String(
+                            mAdfMetadata.get(TangoAreaDescriptionMetaData.KEY_UUID));
+                    final File filesDir = getApplicationContext().getFilesDir();
+                    mapService = new MapService(uuid,filesDir);
+                }
+
                 final Place place = mapService.nearestPlace(TangoJtsUtil.coordinate(pose));
                 String locationName;
                 if (place == null) {
-                    locationName = new String(
+                    final String adfFile = new String(
                             mAdfMetadata.get(TangoAreaDescriptionMetaData.KEY_NAME));
+                    locationName = adfFile;
                 } else {
                     locationName = place.name();
                 }
