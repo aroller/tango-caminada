@@ -24,19 +24,19 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.TextView;
 
-import com.google.atap.tangoservice.TangoAreaDescriptionMetaData;
+import com.vividsolutions.jts.geom.Coordinate;
 
 /**
  * This Class shows a dialog to set the name of an ADF. When you press okay
  * SetNameLocation Call back is called where setting the name should be handled.
  */
 public class WaypointNameDialog extends DialogFragment implements OnClickListener {
-    static final String TRANSLATION_KEY = "TRANSLATION";
+    static final String COORDINATE_KEY = "COORDINATE";
     private EditText mNameEditText;
-    private float[] translationAsFloats;
+    private Coordinate coordinate;
     private WaypiontNameCommunicator mCommunicator;
+    private String adfUuid;
 
     @Override
     public void onAttach(Activity activity) {
@@ -52,7 +52,7 @@ public class WaypointNameDialog extends DialogFragment implements OnClickListene
         mNameEditText = (EditText) dialogView.findViewById(R.id.name);
         dialogView.findViewById(R.id.Ok).setOnClickListener(this);
         dialogView.findViewById(R.id.cancel).setOnClickListener(this);
-        this.translationAsFloats = getArguments().getFloatArray(TRANSLATION_KEY);
+        this.coordinate = (Coordinate) getArguments().getSerializable(COORDINATE_KEY);
         setCancelable(false);
         return dialogView;
     }
@@ -62,7 +62,7 @@ public class WaypointNameDialog extends DialogFragment implements OnClickListene
         switch (v.getId()) {
             case R.id.Ok:
                 mCommunicator.onWaypointName(mNameEditText.getText().toString(),
-                        translationAsFloats);
+                        coordinate);
                 dismiss();
                 break;
             case R.id.cancel:
@@ -72,6 +72,6 @@ public class WaypointNameDialog extends DialogFragment implements OnClickListene
     }
 
     interface WaypiontNameCommunicator {
-        public void onWaypointName(String name, float[] translationAsFloats);
+        public void onWaypointName(String name, Coordinate coordinate);
     }
 }

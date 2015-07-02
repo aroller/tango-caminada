@@ -16,6 +16,9 @@
 
 package com.projecttango.experiments.javaarealearning;
 
+import com.aawhere.jts.map.MapService;
+import com.aawhere.tango.jts.TangoJtsUtil;
+import com.aawhere.jts.place.Place;
 import com.google.atap.tangoservice.Tango;
 import com.google.atap.tangoservice.Tango.OnTangoUpdateListener;
 import com.google.atap.tangoservice.TangoAreaDescriptionMetaData;
@@ -44,8 +47,12 @@ import android.widget.Toast;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.projecttango.experiments.javaarealearning.SetADFNameDialog.SetNameCommunicator;
+import com.vividsolutions.jts.geom.Coordinate;
+import com.vividsolutions.jts.geom.GeometryFactory;
+import com.vividsolutions.jts.geom.Point;
 
 /**
  * Main Activity class for the Area Learning API Sample. Handles the connection to the Tango service
@@ -121,6 +128,11 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
     private static final DecimalFormat threeDec = new DecimalFormat("00.000");
     public static Object sharedLock = new Object();
 
+    /**
+     * The repository of places recorded during this session.
+     */
+    private MapService mapService = new MapService();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -186,7 +198,8 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
     }
 
     /**
-     * provides a new tango service session allowing for multiple attempts to localize against different ADF.
+     * provides a new tango service session allowing for multiple attempts to localize against
+     * different ADF.
      */
     private void initializeNewTangoService() {
         // Instantiate the Tango service
@@ -393,15 +406,14 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
     }
 
     /**
-     * shows a dialog to record the current coordinates by a name given.
+     * shows a dialog to record the current coordinates by a name given. This should only be called
+     * if localization has occurred.
      */
     private void markWaypoint() {
         Bundle bundle = new Bundle();
         TangoPoseData poseData = devicePoseFromMemory();
-        if (poseData != null) {
-            float[] translationAsFloats = poseData.getTranslationAsFloats();
-            bundle.putFloatArray(WaypointNameDialog.TRANSLATION_KEY, translationAsFloats);
-        }
+        Coordinate coordinate = TangoJtsUtil.coordinate(poseData);
+        bundle.putSerializable(WaypointNameDialog.COORDINATE_KEY, coordinate);
         FragmentManager manager = getFragmentManager();
         WaypointNameDialog setADFNameDialog = new WaypointNameDialog();
         setADFNameDialog.setArguments(bundle);
@@ -409,9 +421,10 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
     }
 
     @Override
-    public void onWaypointName(String name, float[] translationAsFloats) {
-        Log.i(TAG, "Waypiont named " + name + " at " + translationAsFloats[TangoPoseData.INDEX_TRANSLATION_X] + "," + translationAsFloats[TangoPoseData.INDEX_TRANSLATION_Y]);
-
+    public void onWaypointName(String name, Coordinate coordinate) {
+        Log.i(TAG,
+                "Waypiont named " + name + " at " + coordinate);
+        mapService.place(name, coordinate);
     }
 
     private void saveAdf() {
@@ -489,8 +502,17 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
                     mMarkWaypoint.setVisibility(View.VISIBLE);
                 }
 
-                String adfName = new String(mAdfMetadata.get(TangoAreaDescriptionMetaData.KEY_NAME));
-                mAwarenessTextView.setText(getString(R.string.awareness_memory_valid, adfName));
+                final Place place = mapService.nearestPlace(TangoJtsUtil.coordinate(pose));
+                String locationName;
+                if (place == null) {
+                    locationName = new String(
+                            mAdfMetadata.get(TangoAreaDescriptionMetaData.KEY_NAME));
+                } else {
+                    locationName = place.name();
+                }
+                mAwarenessTextView.setText(
+                        getString(R.string.awareness_memory_valid, locationName));
+
             } else if (pose.statusCode == TangoPoseData.POSE_INVALID) {
                 if (mIsConstantSpaceRelocalize) {
                     mAwarenessTextView.setText(getString(R.string.awareness_memory_invalid));
@@ -524,7 +546,8 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
     }
 
     /**
-     * accesses the pose, if available, that describes the from from the device as it relates to the area description file.
+     * accesses the pose, if available, that describes the from from the device as it relates to the
+     * area description file.
      *
      * @return the pose or null if not available
      */
