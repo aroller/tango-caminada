@@ -1,4 +1,4 @@
-package com.aawhere.jts.place;
+package com.aawhere.jts.map.place;
 
 import com.vividsolutions.jts.geom.Point;
 

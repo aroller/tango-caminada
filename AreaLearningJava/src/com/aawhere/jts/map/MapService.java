@@ -1,12 +1,9 @@
 package com.aawhere.jts.map;
 
-import android.util.Log;
-
-import com.aawhere.jts.place.Place;
-import com.aawhere.jts.place.PlaceRepository;
-import com.aawhere.jts.place.PlaceUtil;
+import com.aawhere.jts.map.place.Place;
+import com.aawhere.jts.map.place.PlaceRepository;
+import com.aawhere.jts.map.place.PlaceUtil;
 import com.vividsolutions.jts.geom.Coordinate;
-import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.geom.MultiPoint;
 import com.vividsolutions.jts.geom.Point;
@@ -14,8 +11,6 @@ import com.vividsolutions.jts.operation.distance.DistanceOp;
 import com.vividsolutions.jts.operation.distance.GeometryLocation;
 
 import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
 
 /**
  * A general purpose dynamic map that manages associated features.  This service only works with a

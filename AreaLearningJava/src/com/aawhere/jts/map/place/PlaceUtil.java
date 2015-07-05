@@ -1,8 +1,7 @@
-package com.aawhere.jts.place;
+package com.aawhere.jts.map.place;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
-import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.Point;
 
 /**

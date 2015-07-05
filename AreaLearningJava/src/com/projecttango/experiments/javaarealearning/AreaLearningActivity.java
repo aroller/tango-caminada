@@ -17,8 +17,9 @@
 package com.projecttango.experiments.javaarealearning;
 
 import com.aawhere.jts.map.MapService;
+import com.aawhere.tango.TangoEulerAngle;
 import com.aawhere.tango.jts.TangoJtsUtil;
-import com.aawhere.jts.place.Place;
+import com.aawhere.jts.map.place.Place;
 import com.google.atap.tangoservice.Tango;
 import com.google.atap.tangoservice.Tango.OnTangoUpdateListener;
 import com.google.atap.tangoservice.TangoAreaDescriptionMetaData;
@@ -48,12 +49,9 @@ import android.widget.Toast;
 import java.io.File;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import com.projecttango.experiments.javaarealearning.SetADFNameDialog.SetNameCommunicator;
 import com.vividsolutions.jts.geom.Coordinate;
-import com.vividsolutions.jts.geom.GeometryFactory;
-import com.vividsolutions.jts.geom.Point;
 
 /**
  * Main Activity class for the Area Learning API Sample. Handles the connection to the Tango service
@@ -481,15 +479,14 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
     /**
      * Updates the text view in UI screen with the Pose. Each pose is associated with Target and
      * Base Frame. We need to check for that pair and update our views accordingly.
-     *
-     * @param pose
      */
     private void updateTextViews() {
         if (devicePoseFromMemory() != null
                 && devicePoseFromMemory().baseFrame == TangoPoseData.COORDINATE_FRAME_AREA_DESCRIPTION
                 && devicePoseFromMemory().targetFrame == TangoPoseData.COORDINATE_FRAME_DEVICE) {
             mAdf2DeviceTranslationTextView.setText(getTranslationString(devicePoseFromMemory()));
-            mAdf2DeviceQuatTextView.setText(getQuaternionString(devicePoseFromMemory()));
+            final String quaternionString = getQuaternionString(devicePoseFromMemory());
+            mAdf2DeviceQuatTextView.setText(quaternionString);
             mAdf2DevicePoseStatusTextView.setText(getPoseStatus(devicePoseFromMemory()));
             mAdf2DevicePoseCountTextView.setText(Integer.toString(mAdf2DevicePoseCount));
             mAdf2DevicePoseDeltaTextView.setText(threeDec.format(mAdf2DevicePoseDelta));
@@ -508,7 +505,7 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
                     final String uuid = new String(
                             mAdfMetadata.get(TangoAreaDescriptionMetaData.KEY_UUID));
                     final File filesDir = getApplicationContext().getFilesDir();
-                    mapService = new MapService(uuid,filesDir);
+                    mapService = new MapService(uuid, filesDir);
                 }
 
                 final Place place = mapService.nearestPlace(TangoJtsUtil.coordinate(pose));
@@ -522,6 +519,7 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
                 }
                 mAwarenessTextView.setText(
                         getString(R.string.awareness_memory_valid, locationName));
+
 
             } else if (pose.statusCode == TangoPoseData.POSE_INVALID) {
                 if (mIsConstantSpaceRelocalize) {
@@ -555,6 +553,13 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
         }
     }
 
+    private String getEulerAngleString(TangoPoseData tangoPoseData) {
+        final TangoEulerAngle eulerAngle = TangoEulerAngle.builder().poseData(
+                tangoPoseData).build();
+        return "[" + threeDec.format(eulerAngle.heading()) + "," + threeDec.format(
+                eulerAngle.attitude()) + "," + threeDec.format(eulerAngle.bank()) + "]";
+    }
+
     /**
      * accesses the pose, if available, that describes the from from the device as it relates to the
      * area description file.
@@ -573,9 +578,16 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
     }
 
     private String getQuaternionString(TangoPoseData pose) {
-        return "[" + threeDec.format(pose.rotation[0]) + "," + threeDec.format(pose.rotation[1])
-                + "," + threeDec.format(pose.rotation[2]) + "," + threeDec.format(pose.rotation[3])
-                + "] ";
+        final String eulerAngleString = (pose.statusCode == TangoPoseData.POSE_VALID) ? getEulerAngleString(
+                pose) : "";
+
+        return "[" + threeDec.format(
+                pose.rotation[TangoPoseData.INDEX_ROTATION_X]) + "," + threeDec.format(
+                pose.rotation[TangoPoseData.INDEX_ROTATION_Y])
+                + "," + threeDec.format(
+                pose.rotation[TangoPoseData.INDEX_ROTATION_Z]) + "," + threeDec.format(
+                pose.rotation[TangoPoseData.INDEX_ROTATION_W])
+                + "] " + eulerAngleString;
 
     }
 
