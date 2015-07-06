@@ -26,25 +26,27 @@ public class MapService {
     private PlaceRepository placeRepository;
     private String mapId;
 
-    public MapService(String mapId, File filesDir){
+    public MapService(String mapId, File filesDir) {
         this.mapId = mapId;
-        this.placeRepository = new PlaceRepository(this.mapId,filesDir);
+        this.placeRepository = new PlaceRepository(this.mapId, filesDir);
     }
 
-    /**Provides the nearest place to the coordinate given.
+    /**
+     * Provides the nearest destination to the coordinate given.
      *
      * @param coordinate
-     * @return the nearest place or null if no places are defined
+     * @return the nearest destination or null if no places are defined
      */
     public Place nearestPlace(Coordinate coordinate) {
-        if(placeRepository.all().isEmpty()){
+        if (placeRepository.all().isEmpty()) {
             return null;
         }
 
-        MultiPoint multiPoint = factory.createMultiPoint(PlaceUtil.points(this.placeRepository.all()));
+        MultiPoint multiPoint = factory.createMultiPoint(
+                PlaceUtil.points(this.placeRepository.all()));
         Point target = factory.createPoint(coordinate);
         //finds the nearest point
-        DistanceOp distanceOp = new DistanceOp(target,multiPoint);
+        DistanceOp distanceOp = new DistanceOp(target, multiPoint);
         GeometryLocation[] nearestLocations = distanceOp.nearestLocations();
         //the location array corresponds with the inputs
         int placeIndex = 1;
@@ -55,12 +57,23 @@ public class MapService {
     }
 
     /**
-     * creates a place and associates it with the map.
+     * creates a destination and associates it with the map.
      */
     public Place place(String name, Coordinate coordinate) {
         Point point = factory.createPoint(coordinate);
         Place place = Place.builder().name(name).point(point).build();
-            placeRepository.add(place);
+        placeRepository.add(place);
         return place;
+    }
+
+    /**
+     * Retruns the place matching the name given. If an exact match can't be made a close match will
+     * be attempted. If no match can be made then null is returned.
+     *
+     * @param name
+     * @return
+     */
+    public Place place(String name) {
+        return placeRepository.findByName(name);
     }
 }

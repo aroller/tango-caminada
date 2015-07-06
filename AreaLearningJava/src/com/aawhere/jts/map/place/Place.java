@@ -8,7 +8,7 @@ import java.io.Serializable;
  * A point that describes an area or a spot within another area. The coordinate system used is
  * defined by the Point's SRID.
  * <p/>
- * The coordinates are relative to the origin of the ADF that was localized when this place was
+ * The coordinates are relative to the origin of the ADF that was localized when this destination was
  * created.
  * <p/>
  * Created by aroller on 7/2/15.
@@ -16,20 +16,20 @@ import java.io.Serializable;
 public class Place implements Serializable {
 
     /**
-     * Uniquely identifies this place within the scope of the map or ADF for which this place
+     * Uniquely identifies this destination within the scope of the map or ADF for which this destination
      * exists.
      */
     private Long id;
 
     /**
-     * The most common word (or few words) that describes this place.
+     * The most common word (or few words) that describes this destination.
      */
     private String name;
     /**
-     * The significant point for a place.  Some places may be well represented by only a single
+     * The significant point for a destination.  Some places may be well represented by only a single
      * coordinate while most will have a 2D or 3D geometry associated to it.  This represents the
-     * most significant point which may be the center of the place, but more importantly represents
-     * the most significant part of the place (i.e. town square for a town).
+     * most significant point which may be the center of the destination, but more importantly represents
+     * the most significant part of the destination (i.e. town square for a town).
      */
     private Point point;
 
@@ -54,7 +54,7 @@ public class Place implements Serializable {
             place.id = System.currentTimeMillis();
             place.point.setUserData(place.id);
 
-            //FIXME:place must be nulled.  use builder
+            //FIXME:destination must be nulled.  use builder
             return this.place;
         }
     }

@@ -17,6 +17,7 @@
 package com.projecttango.experiments.javaarealearning;
 
 import com.aawhere.jts.map.MapService;
+import com.aawhere.jts.map.place.PlaceNavigator;
 import com.aawhere.tango.TangoEulerAngle;
 import com.aawhere.tango.jts.TangoJtsUtil;
 import com.aawhere.jts.map.place.Place;
@@ -59,7 +60,7 @@ import com.vividsolutions.jts.geom.Coordinate;
  * delegated to the {@link ALRenderer} class.
  */
 public class AreaLearningActivity extends Activity implements View.OnClickListener,
-        SetNameCommunicator, WaypointNameDialog.WaypiontNameCommunicator {
+        SetNameCommunicator, WaypointNameDialog.WaypiontNameCommunicator, GoDialog.GoCommunicator {
 
     private static final String TAG = AreaLearningActivity.class.getSimpleName();
     private static final int SECONDS_TO_MILLI = 1000;
@@ -77,6 +78,7 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
      * general description of what the device knows
      */
     private TextView mAwarenessTextView;
+    private TextView mGuidanceTextView;
     private TextView mApplicationVersionTextView;
     private TextView mUUIDTextView;
     private TextView mStart2DevicePoseStatusTextView;
@@ -91,6 +93,7 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
 
     private Button mSaveAdf;
     private Button mMarkWaypoint;
+    private Button mGo;
     private Button mFirstPersonButton;
     private Button mThirdPersonButton;
     private Button mTopDownButton;
@@ -131,6 +134,10 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
      * The repository of places recorded during this session.
      */
     private MapService mapService;
+    /**
+     * Provides guidance to get to a destination.
+     */
+    private PlaceNavigator navigator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -165,11 +172,13 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
         mTangoServiceVersionTextView = (TextView) findViewById(R.id.version);
         mApplicationVersionTextView = (TextView) findViewById(R.id.appversion);
         mAwarenessTextView = (TextView) findViewById(R.id.awareness);
+        mGuidanceTextView = (TextView) findViewById(R.id.guidance);
 
         mGLView = (GLSurfaceView) findViewById(R.id.gl_surface_view);
 
         mSaveAdf = (Button) findViewById(R.id.saveAdf);
         mMarkWaypoint = (Button) findViewById(R.id.markWaypoint);
+        mGo = (Button) findViewById(R.id.go);
         mUUIDTextView = (TextView) findViewById(R.id.uuid);
 
         mSaveAdf.setVisibility(View.GONE);
@@ -419,11 +428,27 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
         setADFNameDialog.show(manager, "WaypointNameDialog");
     }
 
+
     @Override
     public void onWaypointName(String name, Coordinate coordinate) {
         Log.i(TAG,
                 "Waypiont named " + name + " at " + coordinate);
         mapService.place(name, coordinate);
+    }
+
+    private void go() {
+        FragmentManager manager = getFragmentManager();
+        GoDialog goDialog = new GoDialog();
+        goDialog.show(manager, "GoDialog");
+    }
+
+    @Override
+    public void onGo(String destinationName) {
+        final Place place = this.mapService.place(destinationName);
+        if (place != null) {
+            this.navigator = PlaceNavigator.builder().destination(place).build();
+
+        }
     }
 
     private void saveAdf() {
@@ -500,6 +525,7 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
                     mMarkWaypoint.setVisibility(View.VISIBLE);
                 }
 
+
                 if (mapService == null) {
                     //load the map service using the uuid of the localized ADF
                     final String uuid = new String(
@@ -508,7 +534,8 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
                     mapService = new MapService(uuid, filesDir);
                 }
 
-                final Place place = mapService.nearestPlace(TangoJtsUtil.coordinate(pose));
+                final Coordinate currentLocation = TangoJtsUtil.coordinate(pose);
+                final Place place = mapService.nearestPlace(currentLocation);
                 String locationName;
                 if (place == null) {
                     final String adfFile = new String(
@@ -519,6 +546,14 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
                 }
                 mAwarenessTextView.setText(
                         getString(R.string.awareness_memory_valid, locationName));
+
+                if (navigator != null) {
+                    final TangoEulerAngle eulerAngle = TangoEulerAngle.builder().poseData(
+                            pose).build();
+                    final PlaceNavigator.Instruction instruction = navigator.instruction(
+                            currentLocation, eulerAngle.heading());
+                    mGuidanceTextView.setText(instruction.name());
+                }
 
 
             } else if (pose.statusCode == TangoPoseData.POSE_INVALID) {
@@ -662,6 +697,9 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
                 break;
             case R.id.markWaypoint:
                 markWaypoint();
+                break;
+            case R.id.go:
+               go();
                 break;
             default:
                 Log.w(TAG, "Unknown button click");

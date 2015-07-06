@@ -327,16 +327,6 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/awareness" />
-
-        <TextView
-            android:id="@+id/awareness"
-            android:layout_width="399dp"
-            android:layout_height="wrap_content"
-            android:text="@string/na" />
     </LinearLayout>
 
     <Button
@@ -386,5 +376,48 @@
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@+id/saveAdf"
         android:layout_toEndOf="@+id/saveAdf" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/awareness"
+        android:layout_alignTop="@+id/first_person_button"
+        android:layout_alignParentStart="true"
+        android:id="@+id/textView"/>
+
+    <TextView
+        android:id="@+id/awareness"
+        android:layout_width="399dp"
+        android:layout_height="wrap_content"
+        android:text="@string/na"
+        android:layout_alignTop="@+id/textView"
+        android:layout_alignEnd="@+id/linearLayout1"
+        android:layout_alignBottom="@+id/textView"
+        android:layout_toEndOf="@+id/textView"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/guidance"
+        android:id="@+id/guidanceLabel"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:id="@+id/guidance"
+        android:layout_width="399dp"
+        android:layout_height="wrap_content"
+        android:text="@string/na"
+        android:layout_below="@+id/awareness"
+        android:layout_toEndOf="@+id/textView"/>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:id="@+id/go"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="@string/go"
+        android:layout_alignTop="@+id/saveAdf"
+        android:layout_toEndOf="@+id/markWaypoint"/>
 
 </RelativeLayout>

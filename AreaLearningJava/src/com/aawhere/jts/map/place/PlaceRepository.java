@@ -14,6 +14,8 @@ import java.io.ObjectOutputStream;
 import java.util.Collection;
 import java.util.HashMap;
 
+import javax.annotation.Nullable;
+
 /**
  * Created by aroller on 7/2/15.
  */
@@ -43,14 +45,14 @@ public class PlaceRepository {
 
     /**
      * @param id
-     * @return the place matching the id or null if none are found
+     * @return the destination matching the id or null if none are found
      */
     public Place place(Long id) {
         return places.get(id);
     }
 
     /**
-     * Adds a place to the repository available for retrieval during this session and others.
+     * Adds a destination to the repository available for retrieval during this session and others.
      *
      * @param place
      */
@@ -84,5 +86,13 @@ public class PlaceRepository {
 
     }
 
-
+    /**
+     *
+     * @param name
+     * @return the place matching the given name or null if no match can be made
+     */
+    @Nullable
+    public Place findByName(String name) {
+       return PlaceUtil.named(name,all());
+    }
 }
