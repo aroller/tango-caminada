@@ -1,10 +1,8 @@
 package com.aawhere.jts.map.place;
 
 import com.aawhere.lang.ObjectBuilder;
-import com.aawhere.tango.TangoEulerAngle;
 import com.vividsolutions.jts.algorithm.Angle;
 import com.vividsolutions.jts.geom.Coordinate;
-import com.vividsolutions.jts.operation.distance.DistanceOp;
 
 /**
  * Provides instructions that will guide the person or machine that is able to move the tango

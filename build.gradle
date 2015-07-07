@@ -20,6 +20,7 @@ buildscript {
 
 allprojects {
     repositories {
+        mavenLocal();
         maven {
             url "http://nexus.aawhere.com/content/groups/public/"
             //FIXME: this is copied from buildscript...keep only one if possible
@@ -28,6 +29,6 @@ allprojects {
                 password 'yMt\'(U7]b[?re,V-'
             }
         }
-        maven { url System.getenv('HOME') + "/.m2/repository/" }
+
     }
 }

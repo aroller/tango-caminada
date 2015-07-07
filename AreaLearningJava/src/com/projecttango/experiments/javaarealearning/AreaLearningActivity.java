@@ -16,24 +16,6 @@
 
 package com.projecttango.experiments.javaarealearning;
 
-import com.aawhere.jts.map.MapService;
-import com.aawhere.jts.map.place.NavigationInstructions;
-import com.aawhere.jts.map.place.PlaceNavigator;
-import com.aawhere.tango.TangoEulerAngle;
-import com.aawhere.tango.jts.TangoJtsUtil;
-import com.aawhere.jts.map.place.Place;
-import com.google.atap.tangoservice.Tango;
-import com.google.atap.tangoservice.Tango.OnTangoUpdateListener;
-import com.google.atap.tangoservice.TangoAreaDescriptionMetaData;
-import com.google.atap.tangoservice.TangoConfig;
-import com.google.atap.tangoservice.TangoCoordinateFramePair;
-import com.google.atap.tangoservice.TangoErrorException;
-import com.google.atap.tangoservice.TangoEvent;
-import com.google.atap.tangoservice.TangoInvalidException;
-import com.google.atap.tangoservice.TangoOutOfDateException;
-import com.google.atap.tangoservice.TangoPoseData;
-import com.google.atap.tangoservice.TangoXyzIjData;
-
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.content.Intent;
@@ -48,12 +30,30 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.aawhere.jts.map.MapService;
+import com.aawhere.jts.map.place.NavigationInstructions;
+import com.aawhere.jts.map.place.Place;
+import com.aawhere.jts.map.place.PlaceNavigator;
+import com.aawhere.measure.QuaternionEulerAngles;
+import com.aawhere.tango.TangoUtil;
+import com.aawhere.tango.jts.TangoJtsUtil;
+import com.google.atap.tangoservice.Tango;
+import com.google.atap.tangoservice.Tango.OnTangoUpdateListener;
+import com.google.atap.tangoservice.TangoAreaDescriptionMetaData;
+import com.google.atap.tangoservice.TangoConfig;
+import com.google.atap.tangoservice.TangoCoordinateFramePair;
+import com.google.atap.tangoservice.TangoErrorException;
+import com.google.atap.tangoservice.TangoEvent;
+import com.google.atap.tangoservice.TangoInvalidException;
+import com.google.atap.tangoservice.TangoOutOfDateException;
+import com.google.atap.tangoservice.TangoPoseData;
+import com.google.atap.tangoservice.TangoXyzIjData;
+import com.projecttango.experiments.javaarealearning.SetADFNameDialog.SetNameCommunicator;
+import com.vividsolutions.jts.geom.Coordinate;
+
 import java.io.File;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-
-import com.projecttango.experiments.javaarealearning.SetADFNameDialog.SetNameCommunicator;
-import com.vividsolutions.jts.geom.Coordinate;
 
 /**
  * Main Activity class for the Area Learning API Sample. Handles the connection to the Tango service
@@ -558,10 +558,10 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
                             getString(R.string.awareness_memory_valid, locationName));
 
                     if (navigator != null) {
-                        final TangoEulerAngle eulerAngle = TangoEulerAngle.builder().poseData(
-                                devicePoseFromMemory).headingOnly().build();
+                        final QuaternionEulerAngles eulerAngles = TangoUtil.headingAngles(
+                                devicePoseFromMemory);
                         final NavigationInstructions instruction = navigator.instruction(
-                                currentLocation, eulerAngle.heading());
+                                currentLocation, eulerAngles.heading());
                         final String instructionText = instruction.instruction().name();
                         final String bearing = threeDec.format(instruction.bearing());
                         final String distance = threeDec.format(instruction.distance());
@@ -570,8 +570,6 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
                                 instructionText, bearing, distance, placeName
                         );
                         mGuidanceTextView.setText(guidanceText);
-                    } else {
-                        onGo("Carol's Desk");
                     }
 
                 }
@@ -608,8 +606,7 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
     }
 
     private String getEulerAngleString(TangoPoseData tangoPoseData) {
-        final TangoEulerAngle eulerAngle = TangoEulerAngle.builder().poseData(
-                tangoPoseData).headingOnly().build();
+        final QuaternionEulerAngles eulerAngle = TangoUtil.headingAngles(tangoPoseData);
         return "[" + threeDec.format(eulerAngle.heading()) + "," + threeDec.format(
                 eulerAngle.attitude()) + "," + threeDec.format(eulerAngle.bank()) + "]";
     }

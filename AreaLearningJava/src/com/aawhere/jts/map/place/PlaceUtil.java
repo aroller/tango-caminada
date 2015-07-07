@@ -1,9 +1,12 @@
 package com.aawhere.jts.map.place;
 
+import com.aawhere.lang.string.StringUtilsExtended;
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
+import com.google.common.collect.ImmutableListMultimap;
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Multimaps;
 import com.vividsolutions.jts.geom.Point;
 
 import javax.annotation.Nullable;
@@ -49,9 +52,9 @@ public class PlaceUtil {
     }
 
     /**
-     * Provides the predicate with the name given OR null if no match can be made.
+     * Provides the predicate with the name given OR null if no match can be made. Places with the
+     * same name will return one of the matches with no preference.
      * <p/>
-     * TODO:Upgrade this to find close enough matches using http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/StringUtils.html#getLevenshteinDistance(java.lang.CharSequence,%20java.lang.CharSequence)
      *
      * @param name
      * @param places
@@ -61,6 +64,8 @@ public class PlaceUtil {
     public static Place named(String name, Iterable<Place> places) {
         final Predicate<Place> predicate = Predicates.compose(Predicates.equalTo(name),
                 nameFunction());
-        return Iterables.getFirst(Iterables.filter(places, predicate), null);
+        final ImmutableListMultimap<String, Place> index = Multimaps.index(places, nameFunction());
+        final String bestMatch = StringUtilsExtended.bestMatch(name, index.keys());
+        return index.get(bestMatch).iterator().next();
     }
 }
