@@ -37,6 +37,7 @@ public class TangoEulerAngle {
         double y;
         double z;
         double w;
+        private boolean headingOnly = false;
 
 
         private TangoEulerAngleBuilder() {
@@ -73,6 +74,15 @@ public class TangoEulerAngle {
             return this;
         }
 
+        /**When only interested in heading this will zero out x and z
+         * to avoid problems with Euler Angles such as Gimbel Lock.
+         *
+         * @return
+         */
+        public TangoEulerAngleBuilder headingOnly(){
+            this.headingOnly = true;
+            return this;
+        }
         @Override
         protected void validate() {
             super.validate();
@@ -81,6 +91,11 @@ public class TangoEulerAngle {
 
         public TangoEulerAngle build() {
             TangoEulerAngle built = super.build();
+
+            if(this.headingOnly){
+                this.x = 0.0;
+                this.z = 0.0;
+            }
 
             //this is copied from the non-normalized code found on the website
             double sqw = w * w;

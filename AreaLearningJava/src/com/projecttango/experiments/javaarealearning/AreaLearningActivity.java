@@ -17,6 +17,7 @@
 package com.projecttango.experiments.javaarealearning;
 
 import com.aawhere.jts.map.MapService;
+import com.aawhere.jts.map.place.NavigationInstructions;
 import com.aawhere.jts.map.place.PlaceNavigator;
 import com.aawhere.tango.TangoEulerAngle;
 import com.aawhere.tango.jts.TangoJtsUtil;
@@ -182,10 +183,12 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
         mUUIDTextView = (TextView) findViewById(R.id.uuid);
 
         mSaveAdf.setVisibility(View.GONE);
+        mGo.setVisibility(View.GONE);
         // Set up button click listeners
         mFirstPersonButton.setOnClickListener(this);
         mThirdPersonButton.setOnClickListener(this);
         mTopDownButton.setOnClickListener(this);
+
 
         PackageInfo packageInfo;
         try {
@@ -235,6 +238,8 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
         //don't show until coordinates are available once localized
         mMarkWaypoint.setVisibility(View.INVISIBLE);
         mMarkWaypoint.setOnClickListener(this);
+        mGo.setVisibility(View.INVISIBLE);
+        mGo.setOnClickListener(this);
 
         if (mIsAutoMode) {
             // Set learning mode to config.
@@ -506,57 +511,71 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
      * Base Frame. We need to check for that pair and update our views accordingly.
      */
     private void updateTextViews() {
-        if (devicePoseFromMemory() != null
-                && devicePoseFromMemory().baseFrame == TangoPoseData.COORDINATE_FRAME_AREA_DESCRIPTION
-                && devicePoseFromMemory().targetFrame == TangoPoseData.COORDINATE_FRAME_DEVICE) {
-            mAdf2DeviceTranslationTextView.setText(getTranslationString(devicePoseFromMemory()));
-            final String quaternionString = getQuaternionString(devicePoseFromMemory());
+        final TangoPoseData devicePoseFromMemory = devicePoseFromMemory();
+        if (devicePoseFromMemory != null
+                && devicePoseFromMemory.baseFrame == TangoPoseData.COORDINATE_FRAME_AREA_DESCRIPTION
+                && devicePoseFromMemory.targetFrame == TangoPoseData.COORDINATE_FRAME_DEVICE) {
+            mAdf2DeviceTranslationTextView.setText(getTranslationString(devicePoseFromMemory));
+            final String quaternionString = getQuaternionString(devicePoseFromMemory);
             mAdf2DeviceQuatTextView.setText(quaternionString);
-            mAdf2DevicePoseStatusTextView.setText(getPoseStatus(devicePoseFromMemory()));
+            mAdf2DevicePoseStatusTextView.setText(getPoseStatus(devicePoseFromMemory));
             mAdf2DevicePoseCountTextView.setText(Integer.toString(mAdf2DevicePoseCount));
             mAdf2DevicePoseDeltaTextView.setText(threeDec.format(mAdf2DevicePoseDelta));
 
-            TangoPoseData pose = devicePoseFromMemory();
-            //update the awareness text.  this caused problems in the listener thread.
-            if (pose.statusCode == TangoPoseData.POSE_INITIALIZING) {
-                mAwarenessTextView.setText(getString(R.string.awareness_memory_initializing));
-            } else if (pose.statusCode == TangoPoseData.POSE_VALID) {
-                if (mMarkWaypoint.getVisibility() != View.VISIBLE) {
-                    mMarkWaypoint.setVisibility(View.VISIBLE);
+            if (mAdfMetadata != null) {
+                //update the awareness text.  this caused problems in the listener thread.
+                if (devicePoseFromMemory.statusCode == TangoPoseData.POSE_INITIALIZING) {
+                    mAwarenessTextView.setText(getString(R.string.awareness_memory_initializing));
+                } else if (devicePoseFromMemory.statusCode == TangoPoseData.POSE_VALID) {
+                    if (mMarkWaypoint.getVisibility() != View.VISIBLE) {
+                        mMarkWaypoint.setVisibility(View.VISIBLE);
+                    }
+                    if (mGo.getVisibility() != View.VISIBLE) {
+                        mGo.setVisibility(View.VISIBLE);
+                    }
+
+
+                    if (mapService == null) {
+                        //load the map service using the uuid of the localized ADF
+                        final String uuid = new String(
+                                mAdfMetadata.get(TangoAreaDescriptionMetaData.KEY_UUID));
+                        final File filesDir = getApplicationContext().getFilesDir();
+                        mapService = new MapService(uuid, filesDir);
+                    }
+
+                    final Coordinate currentLocation = TangoJtsUtil.coordinate(
+                            devicePoseFromMemory);
+                    final Place place = mapService.nearestPlace(currentLocation);
+                    String locationName;
+                    if (place == null) {
+                        final String adfFile = new String(
+                                mAdfMetadata.get(TangoAreaDescriptionMetaData.KEY_NAME));
+                        locationName = adfFile;
+                    } else {
+                        locationName = place.name();
+                    }
+                    mAwarenessTextView.setText(
+                            getString(R.string.awareness_memory_valid, locationName));
+
+                    if (navigator != null) {
+                        final TangoEulerAngle eulerAngle = TangoEulerAngle.builder().poseData(
+                                devicePoseFromMemory).headingOnly().build();
+                        final NavigationInstructions instruction = navigator.instruction(
+                                currentLocation, eulerAngle.heading());
+                        final String instructionText = instruction.instruction().name();
+                        final String bearing = threeDec.format(instruction.bearing());
+                        final String distance = threeDec.format(instruction.distance());
+                        final String placeName = navigator.destination().name();
+                        String guidanceText = getString(R.string.guidance_instruction,
+                                instructionText, bearing, distance, placeName
+                        );
+                        mGuidanceTextView.setText(guidanceText);
+                    } else {
+                        onGo("Carol's Desk");
+                    }
+
                 }
-
-
-                if (mapService == null) {
-                    //load the map service using the uuid of the localized ADF
-                    final String uuid = new String(
-                            mAdfMetadata.get(TangoAreaDescriptionMetaData.KEY_UUID));
-                    final File filesDir = getApplicationContext().getFilesDir();
-                    mapService = new MapService(uuid, filesDir);
-                }
-
-                final Coordinate currentLocation = TangoJtsUtil.coordinate(pose);
-                final Place place = mapService.nearestPlace(currentLocation);
-                String locationName;
-                if (place == null) {
-                    final String adfFile = new String(
-                            mAdfMetadata.get(TangoAreaDescriptionMetaData.KEY_NAME));
-                    locationName = adfFile;
-                } else {
-                    locationName = place.name();
-                }
-                mAwarenessTextView.setText(
-                        getString(R.string.awareness_memory_valid, locationName));
-
-                if (navigator != null) {
-                    final TangoEulerAngle eulerAngle = TangoEulerAngle.builder().poseData(
-                            pose).build();
-                    final PlaceNavigator.Instruction instruction = navigator.instruction(
-                            currentLocation, eulerAngle.heading());
-                    mGuidanceTextView.setText(instruction.name());
-                }
-
-
-            } else if (pose.statusCode == TangoPoseData.POSE_INVALID) {
+            } else if (devicePoseFromMemory.statusCode == TangoPoseData.POSE_INVALID) {
                 if (mIsConstantSpaceRelocalize) {
                     mAwarenessTextView.setText(getString(R.string.awareness_memory_invalid));
                 } else {
@@ -590,7 +609,7 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
 
     private String getEulerAngleString(TangoPoseData tangoPoseData) {
         final TangoEulerAngle eulerAngle = TangoEulerAngle.builder().poseData(
-                tangoPoseData).build();
+                tangoPoseData).headingOnly().build();
         return "[" + threeDec.format(eulerAngle.heading()) + "," + threeDec.format(
                 eulerAngle.attitude()) + "," + threeDec.format(eulerAngle.bank()) + "]";
     }
@@ -699,7 +718,7 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
                 markWaypoint();
                 break;
             case R.id.go:
-               go();
+                go();
                 break;
             default:
                 Log.w(TAG, "Unknown button click");

@@ -84,6 +84,7 @@
     <string name="awareness_memory_invalid">I don\'t recognize this place.</string>
     <string name="awareness_memory_unknown">I am having difficulties remembering.</string>
     <string name="awareness_invalid">I\'m not able to recognize this place since I am not using my memory.</string>
+    <string name="guidance_instruction">%1$s bearing %2$s for %3$s to %4$s.</string>
 
     <string-array name="SetDialogMenuItemsAPISpace">
         <item>Rename</item>

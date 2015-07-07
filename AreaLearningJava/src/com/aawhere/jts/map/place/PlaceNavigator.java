@@ -93,7 +93,7 @@ public class PlaceNavigator {
             }
             if (built.distanceToConsiderArrived == null) {
                 //FIXME: this number should be related to #millimetersToConsiderArrived
-                built.distanceToConsiderArrived = 1.0;
+                built.distanceToConsiderArrived = 0.1;
             }
             return built;
         }
@@ -124,15 +124,16 @@ public class PlaceNavigator {
      * @param headingInRadians
      * @return
      */
-    public Instruction instruction(Coordinate location, double headingInRadians) {
+    public NavigationInstructions instruction(Coordinate location, double headingInRadians) {
 
-        double radiansToDestination = Angle.angle(this.destination.point().getCoordinate(),
-                location);
-        final double turnInRadians = Angle.normalize(headingInRadians - radiansToDestination);
+        //angle computes relative to X axis, heading is on the positive Y axis so subtract a quarter
+        double radiansToDestination = Angle.angle(
+                location, this.destination.point().getCoordinate()) - Math.PI / 2;
+        final double turnInRadians = Angle.normalize(radiansToDestination - headingInRadians);
+        final double distance = location.distance(destination.point().getCoordinate());
 
         Instruction instruction;
         if (Math.abs(turnInRadians) < this.radiansToConsiderStraight) {
-            final double distance = location.distance(destination.point().getCoordinate());
             if (distance < this.distanceToConsiderArrived) {
                 instruction = Instruction.ARRIVED;
             } else {
@@ -143,7 +144,9 @@ public class PlaceNavigator {
         } else {
             instruction = Instruction.RIGHT;
         }
-        return instruction;
+        return NavigationInstructions.builder().instruction(instruction).bearing(
+                turnInRadians).distance(distance).build();
     }
+
 
 }

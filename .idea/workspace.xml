@@ -19,17 +19,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2477673a-b3bd-4806-98f8-79880973b988" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/AreaLearningJava/src/com/projecttango/experiments/javaarealearning/GoDialog.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/AreaLearningJava/src/com/aawhere/jts/map/place/PlaceNavigator.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/AreaLearningJava/src/com/aawhere/jts/map/route/Route.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/AreaLearningJava/src/com/aawhere/tango/jts/track/Track.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/AreaLearningJava/src/com/aawhere/tango/jts/track/Trackpoint.java" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/AreaLearningJava/src/com/aawhere/jts/map/place/NavigationInstructions.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AreaLearningJava/src/com/projecttango/experiments/javaarealearning/AreaLearningActivity.java" afterPath="$PROJECT_DIR$/AreaLearningJava/src/com/projecttango/experiments/javaarealearning/AreaLearningActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AreaLearningJava/src/com/aawhere/jts/map/MapService.java" afterPath="$PROJECT_DIR$/AreaLearningJava/src/com/aawhere/jts/map/MapService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AreaLearningJava/src/com/aawhere/jts/map/place/Place.java" afterPath="$PROJECT_DIR$/AreaLearningJava/src/com/aawhere/jts/map/place/Place.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AreaLearningJava/src/com/aawhere/jts/map/place/PlaceRepository.java" afterPath="$PROJECT_DIR$/AreaLearningJava/src/com/aawhere/jts/map/place/PlaceRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AreaLearningJava/src/com/aawhere/jts/map/place/PlaceUtil.java" afterPath="$PROJECT_DIR$/AreaLearningJava/src/com/aawhere/jts/map/place/PlaceUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AreaLearningJava/res/layout/activity_area_learning.xml" afterPath="$PROJECT_DIR$/AreaLearningJava/res/layout/activity_area_learning.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AreaLearningJava/src/com/aawhere/jts/map/place/PlaceNavigator.java" afterPath="$PROJECT_DIR$/AreaLearningJava/src/com/aawhere/jts/map/place/PlaceNavigator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AreaLearningJava/src/com/aawhere/tango/TangoEulerAngle.java" afterPath="$PROJECT_DIR$/AreaLearningJava/src/com/aawhere/tango/TangoEulerAngle.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/commons_core_46_SNAPSHOT.xml" afterPath="$PROJECT_DIR$/.idea/libraries/commons_core_46_SNAPSHOT.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AreaLearningJava/res/values/strings.xml" afterPath="$PROJECT_DIR$/AreaLearningJava/res/values/strings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -64,43 +58,42 @@
           <file leaf-file-name="AreaLearningActivity.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/AreaLearningJava/src/com/projecttango/experiments/javaarealearning/AreaLearningActivity.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.34770888">
-                  <caret line="539" column="11" selection-start-line="539" selection-start-column="11" selection-end-line="539" selection-end-column="11" />
+                <state vertical-scroll-proportion="0.26145554">
+                  <caret line="554" column="52" selection-start-line="554" selection-start-column="52" selection-end-line="554" selection-end-column="52" />
                   <folding>
-                    <element signature="e#10544#10560#0" expanded="true" />
-                    <element signature="e#10967#11001#0" expanded="true" />
-                    <element signature="e#11050#11083#0" expanded="true" />
-                    <element signature="e#11273#11315#0" expanded="true" />
-                    <element signature="e#11426#11464#0" expanded="true" />
-                    <element signature="e#11575#11611#0" expanded="true" />
-                    <element signature="e#11721#11766#0" expanded="true" />
-                    <element signature="e#11825#11862#0" expanded="true" />
-                    <element signature="e#12381#12407#0" expanded="true" />
-                    <element signature="e#20343#20344#0" expanded="true" />
-                    <element signature="e#20378#20379#0" expanded="true" />
-                    <element signature="e#21893#21924#0" expanded="true" />
-                    <element signature="e#22090#22123#0" expanded="true" />
-                    <element signature="e#22277#22308#0" expanded="true" />
-                    <element signature="e#22416#22444#0" expanded="true" />
-                    <element signature="e#23767#23816#0" expanded="true" />
-                    <element signature="e#25044#25100#0" expanded="true" />
-                    <element signature="e#25693#25737#0" expanded="true" />
-                    <element signature="e#25812#25849#0" expanded="true" />
-                    <element signature="e#25934#25978#0" expanded="true" />
-                    <element signature="e#27918#27919#0" expanded="true" />
-                    <element signature="e#27950#27951#0" expanded="true" />
-                    <element signature="e#29005#29042#0" expanded="true" />
-                    <element signature="e#29112#29144#0" expanded="true" />
-                    <element signature="e#29212#29242#0" expanded="true" />
-                    <element signature="e#29288#29320#0" expanded="true" />
-                    <element signature="e#29550#29570#0" expanded="true" />
-                    <element signature="e#29853#29873#0" expanded="true" />
-                    <element signature="e#30016#30039#0" expanded="true" />
-                    <element signature="e#30249#30285#0" expanded="true" />
-                    <element signature="e#30429#30449#0" expanded="true" />
-                    <element signature="e#31511#31512#0" expanded="true" />
-                    <element signature="e#31563#31564#0" expanded="true" />
+                    <element signature="imports" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="TangoEulerAngle.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/AreaLearningJava/src/com/aawhere/tango/TangoEulerAngle.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="98" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#999#1000#0" expanded="true" />
+                    <element signature="e#1051#1052#0" expanded="true" />
+                    <element signature="e#3674#3675#0" expanded="true" />
+                    <element signature="e#3725#3726#0" expanded="true" />
+                    <element signature="e#3896#3897#0" expanded="true" />
+                    <element signature="e#3926#3927#0" expanded="true" />
+                    <element signature="e#3971#3972#0" expanded="true" />
+                    <element signature="e#4002#4003#0" expanded="true" />
+                    <element signature="e#4043#4044#0" expanded="true" />
+                    <element signature="e#4070#4071#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="TangoPoseData.class" pinned="false" current-in-tab="false">
+            <entry file="jar://$PROJECT_DIR$/AreaLearningJava/libs/tango_java_lib.jar!/com/google/atap/tangoservice/TangoPoseData.class">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="-8.28">
+                  <caret line="35" column="28" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="28" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -122,32 +115,9 @@
             <entry file="file://$PROJECT_DIR$/AreaLearningJava/src/com/aawhere/jts/map/place/PlaceNavigator.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="128" column="75" selection-start-line="128" selection-start-column="75" selection-end-line="128" selection-end-column="75" />
+                  <caret line="137" column="50" selection-start-line="137" selection-start-column="50" selection-end-line="137" selection-end-column="50" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                    <element signature="e#1892#1893#0" expanded="true" />
-                    <element signature="e#1943#1944#0" expanded="true" />
-                    <element signature="e#2735#2736#0" expanded="true" />
-                    <element signature="e#2785#2786#0" expanded="true" />
-                    <element signature="e#3005#3006#0" expanded="true" />
-                    <element signature="e#3044#3045#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="PlaceRepository.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/AreaLearningJava/src/com/aawhere/jts/map/place/PlaceRepository.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="93" column="13" selection-start-line="93" selection-start-column="13" selection-end-line="93" selection-end-column="13" />
-                  <folding>
-                    <element signature="e#1543#1544#0" expanded="true" />
-                    <element signature="e#1580#1581#0" expanded="true" />
-                    <element signature="e#1986#1987#0" expanded="true" />
-                    <element signature="e#2024#2025#0" expanded="true" />
-                    <element signature="e#2718#2719#0" expanded="true" />
-                    <element signature="e#2767#2768#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -157,26 +127,26 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
+          <file leaf-file-name="strings.xml" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/AreaLearningJava/res/values/strings.xml">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-8.68">
-                  <caret line="42" column="32" selection-start-line="42" selection-start-column="18" selection-end-line="42" selection-end-column="32" />
+                <state vertical-scroll-proportion="0.62343097">
+                  <caret line="86" column="72" selection-start-line="86" selection-start-column="72" selection-end-line="86" selection-end-column="72" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="activity_area_learning.xml" pinned="false" current-in-tab="true">
+          <file leaf-file-name="activity_area_learning.xml" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/AreaLearningJava/res/layout/activity_area_learning.xml">
-              <provider selected="true" editor-type-id="android-designer">
-                <state />
-              </provider>
               <provider editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
                   <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
                   <folding />
                 </state>
+              </provider>
+              <provider selected="true" editor-type-id="android-designer">
+                <state />
               </provider>
             </entry>
           </file>
@@ -185,12 +155,7 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
                   <caret line="54" column="6" selection-start-line="54" selection-start-column="6" selection-end-line="54" selection-end-column="6" />
-                  <folding>
-                    <element signature="e#1055#1056#0" expanded="true" />
-                    <element signature="e#1104#1105#0" expanded="true" />
-                    <element signature="e#1181#1389#0" expanded="true" />
-                    <element signature="e#1388#1389#0" expanded="true" />
-                  </folding>
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -3099,7 +3064,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="11485708139000" />
+        <entry key="$PROJECT_DIR$" value="11485962710000" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -3255,7 +3220,7 @@
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm-tree/4.0/asm-tree-4.0.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.vividsolutions/jts/1.13/3ccfb9b60f04d71add996a666ceb8902904fd805/jts-1.13.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/18.0/cce0823396aa693798f8882e64213b1772032b09/guava-18.0.jar" />
-                            <option value="$MAVEN_REPOSITORY$/com/aawhere/lib/commons/commons-core/46-SNAPSHOT/commons-core-46-SNAPSHOT.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.aawhere.lib.commons/commons-core/46-SNAPSHOT/5f8e3ddb205c25cbe9089a22cac376c3f9398d21/commons-core-46-SNAPSHOT.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/3.0.0/5871fb60dc68d67da54a663c3fd636a10a532948/jsr305-3.0.0.jar" />
                             <option value="$MODULE_DIR$/libs/tango_java_lib.jar" />
                           </list>
@@ -3738,17 +3703,18 @@
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/AreaLearningJava/build.gradle" />
         <option value="$PROJECT_DIR$/AreaLearningJava/src/com/aawhere/tango/TangoUtil.java" />
-        <option value="$PROJECT_DIR$/AreaLearningJava/src/com/aawhere/tango/TangoEulerAngle.java" />
         <option value="$PROJECT_DIR$/AreaLearningJava/src/com/aawhere/tango/jts/track/TrackRecorder.java" />
         <option value="$PROJECT_DIR$/AreaLearningJava/src/com/aawhere/jts/map/route/RouteRecorder.java" />
-        <option value="$PROJECT_DIR$/AreaLearningJava/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/AreaLearningJava/src/com/projecttango/experiments/javaarealearning/GoDialog.java" />
         <option value="$PROJECT_DIR$/AreaLearningJava/src/com/aawhere/jts/map/place/PlaceRepository.java" />
         <option value="$PROJECT_DIR$/AreaLearningJava/src/com/aawhere/jts/map/MapService.java" />
         <option value="$PROJECT_DIR$/AreaLearningJava/src/com/aawhere/jts/map/place/PlaceUtil.java" />
-        <option value="$PROJECT_DIR$/AreaLearningJava/src/com/aawhere/jts/map/place/PlaceNavigator.java" />
-        <option value="$PROJECT_DIR$/AreaLearningJava/src/com/projecttango/experiments/javaarealearning/AreaLearningActivity.java" />
         <option value="$PROJECT_DIR$/AreaLearningJava/res/layout/activity_area_learning.xml" />
+        <option value="$PROJECT_DIR$/AreaLearningJava/src/com/aawhere/jts/map/place/NavigationInstructions.java" />
+        <option value="$PROJECT_DIR$/AreaLearningJava/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/AreaLearningJava/src/com/aawhere/jts/map/place/PlaceNavigator.java" />
+        <option value="$PROJECT_DIR$/AreaLearningJava/src/com/aawhere/tango/TangoEulerAngle.java" />
+        <option value="$PROJECT_DIR$/AreaLearningJava/src/com/projecttango/experiments/javaarealearning/AreaLearningActivity.java" />
       </list>
     </option>
   </component>
@@ -3930,40 +3896,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="AreaLearningJava">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="AreaLearningJava">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tango-caminada" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="PackagesPane">
         <subPane>
           <PATH>
@@ -3978,12 +3910,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="AreaLearningJava" />
+              <option name="myItemId" value="TangoUtils" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewLibrariesNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -3992,19 +3920,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="AreaLearningJava" />
+              <option name="myItemId" value="TangoUtils" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vividsolutions" />
+              <option name="myItemId" value="com.projecttango.tangoutils" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -4014,101 +3934,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="AreaLearningJava" />
+              <option name="myItemId" value="TangoUtils" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
+              <option name="myItemId" value="com.projecttango.tangoutils" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="vividsolutions" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tango-caminada" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AreaLearningJava" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vividsolutions" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geom" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tango-caminada" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AreaLearningJava" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vividsolutions" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="algorithm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tango-caminada" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AreaLearningJava" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
+              <option name="myItemId" value="renderables" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -4252,7 +4086,41 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="AreaLearningJava">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="AreaLearningJava">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tango-caminada" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -4598,27 +4466,27 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296146" sideWeight="0.49574015" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296146" sideWeight="0.49361023" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297568" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26550868" sideWeight="0.48783976" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21906693" sideWeight="0.51544195" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2647059" sideWeight="0.4834931" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21906693" sideWeight="0.53035146" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296146" sideWeight="0.4978701" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286004" sideWeight="0.5042598" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18530351" sideWeight="0.52987015" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3287841" sideWeight="0.47138768" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21906693" sideWeight="0.48455805" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18530351" sideWeight="0.54545456" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286004" sideWeight="0.4691161" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21906693" sideWeight="0.46964857" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296146" sideWeight="0.4978701" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24920128" sideWeight="0.49515906" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18530351" sideWeight="0.47012988" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.326572" sideWeight="0.48136315" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18530351" sideWeight="0.45454547" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.326572" sideWeight="0.47284344" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296146" sideWeight="0.48935038" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -4649,104 +4517,19 @@
           <properties />
           <option name="timeStamp" value="5" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/AreaLearningJava/src/com/aawhere/tango/TangoEulerAngle.java</url>
-          <line>96</line>
-          <properties />
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/AreaLearningJava/src/com/aawhere/tango/TangoEulerAngle.java</url>
-          <line>100</line>
-          <properties />
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/AreaLearningJava/src/com/aawhere/tango/TangoEulerAngle.java</url>
-          <line>92</line>
-          <properties />
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/AreaLearningJava/src/com/aawhere/tango/TangoEulerAngle.java</url>
-          <line>52</line>
-          <properties />
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="17" />
+      <option name="time" value="23" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/AreaLearningJava/src/com/projecttango/experiments/javaarealearning/AreaLearningActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="482" column="7" selection-start-line="482" selection-start-column="7" selection-end-line="482" selection-end-column="7" />
-          <folding>
-            <element signature="e#10544#10560#0" expanded="true" />
-            <element signature="e#10967#11001#0" expanded="true" />
-            <element signature="e#11050#11083#0" expanded="true" />
-            <element signature="e#11273#11315#0" expanded="true" />
-            <element signature="e#11426#11464#0" expanded="true" />
-            <element signature="e#11575#11611#0" expanded="true" />
-            <element signature="e#11721#11766#0" expanded="true" />
-            <element signature="e#11825#11862#0" expanded="true" />
-            <element signature="e#12381#12407#0" expanded="true" />
-            <element signature="e#20343#20344#0" expanded="true" />
-            <element signature="e#20378#20379#0" expanded="true" />
-            <element signature="e#21893#21924#0" expanded="true" />
-            <element signature="e#22090#22123#0" expanded="true" />
-            <element signature="e#22277#22308#0" expanded="true" />
-            <element signature="e#22416#22444#0" expanded="true" />
-            <element signature="e#23767#23816#0" expanded="true" />
-            <element signature="e#25044#25100#0" expanded="true" />
-            <element signature="e#25693#25737#0" expanded="true" />
-            <element signature="e#25812#25849#0" expanded="true" />
-            <element signature="e#25934#25978#0" expanded="true" />
-            <element signature="e#27918#27919#0" expanded="true" />
-            <element signature="e#27950#27951#0" expanded="true" />
-            <element signature="e#29005#29042#0" expanded="true" />
-            <element signature="e#29112#29144#0" expanded="true" />
-            <element signature="e#29212#29242#0" expanded="true" />
-            <element signature="e#29288#29320#0" expanded="true" />
-            <element signature="e#29550#29570#0" expanded="true" />
-            <element signature="e#29853#29873#0" expanded="true" />
-            <element signature="e#30016#30039#0" expanded="true" />
-            <element signature="e#30249#30285#0" expanded="true" />
-            <element signature="e#30429#30449#0" expanded="true" />
-            <element signature="e#31511#31512#0" expanded="true" />
-            <element signature="e#31563#31564#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AreaLearningJava/src/com/projecttango/experiments/javaarealearning/ALRenderer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="54" column="33" selection-start-line="54" selection-start-column="33" selection-end-line="54" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AreaLearningJava/src/com/aawhere/tango/TangoEulerAngle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="24" selection-start-line="0" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AreaLearningJava/src/com/aawhere/tango/TangoUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4754,7 +4537,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="34" column="41" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4762,7 +4544,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="29" column="9" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4770,7 +4551,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4778,7 +4558,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="78" column="19" selection-start-line="78" selection-start-column="19" selection-end-line="78" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4794,12 +4573,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="30" column="80" selection-start-line="30" selection-start-column="80" selection-end-line="30" selection-end-column="80" />
-          <folding>
-            <element signature="e#1055#1056#0" expanded="true" />
-            <element signature="e#1104#1105#0" expanded="true" />
-            <element signature="e#1181#1389#0" expanded="true" />
-            <element signature="e#1388#1389#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -4808,39 +4582,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="54" column="13" selection-start-line="54" selection-start-column="13" selection-end-line="54" selection-end-column="13" />
           <folding>
-            <element signature="e#10544#10560#0" expanded="true" />
-            <element signature="e#10967#11001#0" expanded="true" />
-            <element signature="e#11050#11083#0" expanded="true" />
-            <element signature="e#11273#11315#0" expanded="true" />
-            <element signature="e#11426#11464#0" expanded="true" />
-            <element signature="e#11575#11611#0" expanded="true" />
-            <element signature="e#11721#11766#0" expanded="true" />
-            <element signature="e#11825#11862#0" expanded="true" />
-            <element signature="e#12381#12407#0" expanded="true" />
-            <element signature="e#20343#20344#0" expanded="true" />
-            <element signature="e#20378#20379#0" expanded="true" />
-            <element signature="e#21893#21924#0" expanded="true" />
-            <element signature="e#22090#22123#0" expanded="true" />
-            <element signature="e#22277#22308#0" expanded="true" />
-            <element signature="e#22416#22444#0" expanded="true" />
-            <element signature="e#23767#23816#0" expanded="true" />
-            <element signature="e#25044#25100#0" expanded="true" />
-            <element signature="e#25693#25737#0" expanded="true" />
-            <element signature="e#25812#25849#0" expanded="true" />
-            <element signature="e#25934#25978#0" expanded="true" />
-            <element signature="e#27918#27919#0" expanded="true" />
-            <element signature="e#27950#27951#0" expanded="true" />
-            <element signature="e#29005#29042#0" expanded="true" />
-            <element signature="e#29112#29144#0" expanded="true" />
-            <element signature="e#29212#29242#0" expanded="true" />
-            <element signature="e#29288#29320#0" expanded="true" />
-            <element signature="e#29550#29570#0" expanded="true" />
-            <element signature="e#29853#29873#0" expanded="true" />
-            <element signature="e#30016#30039#0" expanded="true" />
-            <element signature="e#30249#30285#0" expanded="true" />
-            <element signature="e#30429#30449#0" expanded="true" />
-            <element signature="e#31511#31512#0" expanded="true" />
-            <element signature="e#31563#31564#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -4849,13 +4591,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="24" column="22" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TangoUtils/src/com/projecttango/tangoutils/renderables/Trajectory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -4870,7 +4605,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4913,7 +4647,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="38" column="51" selection-start-line="38" selection-start-column="51" selection-end-line="38" selection-end-column="51" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4935,7 +4668,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.39020538">
           <caret line="281" column="21" selection-start-line="281" selection-start-column="19" selection-end-line="281" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4943,16 +4675,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="20" column="7" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Library/Android/sdk/platforms/android-19/android.jar!/android/opengl/GLES20.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14778325">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -4960,7 +4682,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4975,10 +4696,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="295" column="19" selection-start-line="295" selection-start-column="19" selection-end-line="295" selection-end-column="19" />
-          <folding>
-            <element signature="e#12473#12474#0" expanded="false" />
-            <element signature="e#12515#12516#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -4990,29 +4707,20 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AreaLearningJava/res/layout/set_name_dialog.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="29" column="9" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AreaLearningJava/src/com/projecttango/experiments/javaarealearning/ALRenderer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="54" column="33" selection-start-line="54" selection-start-column="33" selection-end-line="54" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -5020,7 +4728,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-15.32">
           <caret line="36" column="1" selection-start-line="36" selection-start-column="1" selection-end-line="36" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -5028,25 +4735,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/AreaLearningJava/libs/tango_java_lib.jar!/com/google/atap/tangoservice/TangoPoseData.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3005566">
-          <caret line="18" column="28" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AreaLearningJava/src/com/aawhere/tango/TangoEulerAngle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="51" column="56" selection-start-line="51" selection-start-column="56" selection-end-line="51" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -5054,7 +4742,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="44" column="13" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -5062,15 +4749,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="44" column="13" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.vividsolutions/jts/1.13/ee922fa0a39de08d193337739d336779e3dfa774/jts-1.13-sources.jar!/com/vividsolutions/jts/algorithm/Angle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="243" column="17" selection-start-line="243" selection-start-column="17" selection-end-line="243" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -5078,7 +4756,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="292" column="16" selection-start-line="292" selection-start-column="16" selection-end-line="292" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -5086,15 +4763,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334">
           <caret line="135" column="20" selection-start-line="135" selection-start-column="20" selection-end-line="135" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AreaLearningJava/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.68">
-          <caret line="42" column="32" selection-start-line="42" selection-start-column="18" selection-end-line="42" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -5102,25 +4770,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="93" column="13" selection-start-line="93" selection-start-column="13" selection-end-line="93" selection-end-column="13" />
-          <folding>
-            <element signature="e#1543#1544#0" expanded="true" />
-            <element signature="e#1580#1581#0" expanded="true" />
-            <element signature="e#1986#1987#0" expanded="true" />
-            <element signature="e#2024#2025#0" expanded="true" />
-            <element signature="e#2718#2719#0" expanded="true" />
-            <element signature="e#2767#2768#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AreaLearningJava/src/com/aawhere/jts/map/MapService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="76" column="48" selection-start-line="76" selection-start-column="48" selection-end-line="76" selection-end-column="48" />
-          <folding>
-            <element signature="e#2753#2754#0" expanded="true" />
-            <element signature="e#2808#2809#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -5128,9 +4777,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5971564">
           <caret line="60" column="69" selection-start-line="60" selection-start-column="69" selection-end-line="60" selection-end-column="69" />
-          <folding>
-            <element signature="e#1730#1753#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -5146,11 +4792,62 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="54" column="6" selection-start-line="54" selection-start-column="6" selection-end-line="54" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AreaLearningJava/res/layout/activity_area_learning.xml">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AreaLearningJava/src/com/aawhere/jts/map/place/NavigationInstructions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4404591">
+          <caret line="78" column="46" selection-start-line="78" selection-start-column="46" selection-end-line="78" selection-end-column="46" />
           <folding>
-            <element signature="e#1055#1056#0" expanded="true" />
-            <element signature="e#1104#1105#0" expanded="true" />
-            <element signature="e#1181#1389#0" expanded="true" />
-            <element signature="e#1388#1389#0" expanded="true" />
+            <element signature="e#622#623#0" expanded="false" />
+            <element signature="e#681#682#0" expanded="false" />
+            <element signature="e#1914#1915#0" expanded="false" />
+            <element signature="e#1949#1950#0" expanded="false" />
+            <element signature="e#1914#1915#0" expanded="false" />
+            <element signature="e#1949#1950#0" expanded="false" />
+            <element signature="e#2237#2238#0" expanded="false" />
+            <element signature="e#2276#2277#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.vividsolutions/jts/1.13/ee922fa0a39de08d193337739d336779e3dfa774/jts-1.13-sources.jar!/com/vividsolutions/jts/algorithm/Angle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="83" column="23" selection-start-line="83" selection-start-column="23" selection-end-line="83" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#9342#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#2184#2185#0" expanded="false" />
+            <element signature="e#2230#2231#0" expanded="false" />
+            <element signature="e#2422#2423#0" expanded="false" />
+            <element signature="e#2473#2474#0" expanded="false" />
+            <element signature="e#3197#3198#0" expanded="false" />
+            <element signature="e#3236#3237#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AreaLearningJava/src/com/aawhere/jts/map/MapService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="76" column="48" selection-start-line="76" selection-start-column="48" selection-end-line="76" selection-end-column="48" />
+          <folding>
+            <element signature="e#2753#2754#0" expanded="true" />
+            <element signature="e#2808#2809#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -5158,68 +4855,94 @@
     <entry file="file://$PROJECT_DIR$/AreaLearningJava/src/com/aawhere/jts/map/place/PlaceNavigator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="128" column="75" selection-start-line="128" selection-start-column="75" selection-end-line="128" selection-end-column="75" />
+          <caret line="137" column="50" selection-start-line="137" selection-start-column="50" selection-end-line="137" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1892#1893#0" expanded="true" />
-            <element signature="e#1943#1944#0" expanded="true" />
-            <element signature="e#2735#2736#0" expanded="true" />
-            <element signature="e#2785#2786#0" expanded="true" />
-            <element signature="e#3005#3006#0" expanded="true" />
-            <element signature="e#3044#3045#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AreaLearningJava/res/layout/activity_area_learning.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
+    <entry file="jar://$USER_HOME$/Library/Android/sdk/platforms/android-19/android.jar!/android/opengl/GLES20.class">
+      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AreaLearningJava/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.62343097">
+          <caret line="86" column="72" selection-start-line="86" selection-start-column="72" selection-end-line="86" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TangoUtils/src/com/projecttango/tangoutils/renderables/PointCloud.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PointCloudJava/src/com/projecttango/experiments/javapointcloud/PointCloudActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="53" column="13" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/AreaLearningJava/libs/tango_java_lib.jar!/com/google/atap/tangoservice/TangoPoseData.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.28">
+          <caret line="35" column="28" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AreaLearningJava/src/com/aawhere/tango/TangoEulerAngle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="98" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
+          <folding>
+            <element signature="e#999#1000#0" expanded="true" />
+            <element signature="e#1051#1052#0" expanded="true" />
+            <element signature="e#3674#3675#0" expanded="true" />
+            <element signature="e#3725#3726#0" expanded="true" />
+            <element signature="e#3896#3897#0" expanded="true" />
+            <element signature="e#3926#3927#0" expanded="true" />
+            <element signature="e#3971#3972#0" expanded="true" />
+            <element signature="e#4002#4003#0" expanded="true" />
+            <element signature="e#4043#4044#0" expanded="true" />
+            <element signature="e#4070#4071#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TangoUtils/src/com/projecttango/tangoutils/renderables/Trajectory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5754717">
+          <caret line="162" column="12" selection-start-line="162" selection-start-column="12" selection-end-line="162" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AreaLearningJava/src/com/projecttango/experiments/javaarealearning/ALRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="54" column="33" selection-start-line="54" selection-start-column="33" selection-end-line="54" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AreaLearningJava/src/com/projecttango/experiments/javaarealearning/AreaLearningActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34770888">
-          <caret line="539" column="11" selection-start-line="539" selection-start-column="11" selection-end-line="539" selection-end-column="11" />
+        <state vertical-scroll-proportion="0.26145554">
+          <caret line="554" column="52" selection-start-line="554" selection-start-column="52" selection-end-line="554" selection-end-column="52" />
           <folding>
-            <element signature="e#10544#10560#0" expanded="true" />
-            <element signature="e#10967#11001#0" expanded="true" />
-            <element signature="e#11050#11083#0" expanded="true" />
-            <element signature="e#11273#11315#0" expanded="true" />
-            <element signature="e#11426#11464#0" expanded="true" />
-            <element signature="e#11575#11611#0" expanded="true" />
-            <element signature="e#11721#11766#0" expanded="true" />
-            <element signature="e#11825#11862#0" expanded="true" />
-            <element signature="e#12381#12407#0" expanded="true" />
-            <element signature="e#20343#20344#0" expanded="true" />
-            <element signature="e#20378#20379#0" expanded="true" />
-            <element signature="e#21893#21924#0" expanded="true" />
-            <element signature="e#22090#22123#0" expanded="true" />
-            <element signature="e#22277#22308#0" expanded="true" />
-            <element signature="e#22416#22444#0" expanded="true" />
-            <element signature="e#23767#23816#0" expanded="true" />
-            <element signature="e#25044#25100#0" expanded="true" />
-            <element signature="e#25693#25737#0" expanded="true" />
-            <element signature="e#25812#25849#0" expanded="true" />
-            <element signature="e#25934#25978#0" expanded="true" />
-            <element signature="e#27918#27919#0" expanded="true" />
-            <element signature="e#27950#27951#0" expanded="true" />
-            <element signature="e#29005#29042#0" expanded="true" />
-            <element signature="e#29112#29144#0" expanded="true" />
-            <element signature="e#29212#29242#0" expanded="true" />
-            <element signature="e#29288#29320#0" expanded="true" />
-            <element signature="e#29550#29570#0" expanded="true" />
-            <element signature="e#29853#29873#0" expanded="true" />
-            <element signature="e#30016#30039#0" expanded="true" />
-            <element signature="e#30249#30285#0" expanded="true" />
-            <element signature="e#30429#30449#0" expanded="true" />
-            <element signature="e#31511#31512#0" expanded="true" />
-            <element signature="e#31563#31564#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

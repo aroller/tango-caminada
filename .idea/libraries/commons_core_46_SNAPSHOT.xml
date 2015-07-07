@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="commons-core-46-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/aawhere/lib/commons/commons-core/46-SNAPSHOT/commons-core-46-SNAPSHOT.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.aawhere.lib.commons/commons-core/46-SNAPSHOT/5f8e3ddb205c25cbe9089a22cac376c3f9398d21/commons-core-46-SNAPSHOT.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
