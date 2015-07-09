@@ -35,6 +35,7 @@ import com.aawhere.jts.map.place.NavigationInstructions;
 import com.aawhere.jts.map.place.Place;
 import com.aawhere.jts.map.place.PlaceNavigator;
 import com.aawhere.measure.QuaternionEulerAngles;
+import com.aawhere.tango.TangoDepthCalculator;
 import com.aawhere.tango.TangoUtil;
 import com.aawhere.tango.jts.TangoJtsUtil;
 import com.google.atap.tangoservice.Tango;
@@ -80,6 +81,7 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
      */
     private TextView mAwarenessTextView;
     private TextView mGuidanceTextView;
+    private TextView mDepthTextView;
     private TextView mApplicationVersionTextView;
     private TextView mUUIDTextView;
     private TextView mStart2DevicePoseStatusTextView;
@@ -140,6 +142,11 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
      */
     private PlaceNavigator navigator;
 
+    /**
+     * the depth of the objects in the view of the device.
+     */
+    private TangoDepthCalculator depthData;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -174,6 +181,7 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
         mApplicationVersionTextView = (TextView) findViewById(R.id.appversion);
         mAwarenessTextView = (TextView) findViewById(R.id.awareness);
         mGuidanceTextView = (TextView) findViewById(R.id.guidance);
+        mDepthTextView = (TextView) findViewById(R.id.depth);
 
         mGLView = (GLSurfaceView) findViewById(R.id.gl_surface_view);
 
@@ -235,6 +243,7 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
             mSaveAdf.setVisibility(View.VISIBLE);
             mSaveAdf.setOnClickListener(this);
         }
+        mConfig.putBoolean(TangoConfig.KEY_BOOLEAN_DEPTH,true);
         //don't show until coordinates are available once localized
         mMarkWaypoint.setVisibility(View.INVISIBLE);
         mMarkWaypoint.setOnClickListener(this);
@@ -306,7 +315,9 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
         mTango.connectListener(framePairs, new OnTangoUpdateListener() {
             @Override
             public void onXyzIjAvailable(TangoXyzIjData xyzij) {
-                // Not using XyzIj data for this sample
+                depthData = TangoDepthCalculator.builder().data(
+                        xyzij).build();
+
             }
 
             // Listen to Tango Events
@@ -602,6 +613,18 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
             mAdf2StartPoseStatusTextView.setText(getPoseStatus(mPoses[2]));
             mAdf2StartPoseCountTextView.setText(Integer.toString(mAdf2StartPoseCount));
             mAdf2StartPoseDeltaTextView.setText(threeDec.format(mAdf2StartPoseDelta));
+        }
+
+        if (depthData != null) {
+
+            String distance;
+            if (depthData.hasDistance()) {
+                distance = threeDec.format(depthData.distanceInMeters());
+            } else {
+                distance = getString(R.string.na);
+            }
+            mDepthTextView.setText(
+                    getString(R.string.depth_message, distance, depthData.numberOfPoints().toString()));
         }
     }
 

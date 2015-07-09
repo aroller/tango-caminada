@@ -30,6 +30,7 @@
     <string name="quat">", orientation: "</string>
     <string name="first_person">First</string>
     <string name="third_person">Third</string>
+    <string name="save">Save</string>
     <string name="top_down">Top</string>
     <string name="start">Start</string>
     <string name="autoreseton">Auto Reset On</string>

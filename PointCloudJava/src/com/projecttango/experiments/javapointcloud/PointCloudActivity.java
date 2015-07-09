@@ -41,9 +41,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 /**
@@ -61,6 +64,7 @@ public class PointCloudActivity extends Activity implements OnClickListener {
     private PCRenderer mRenderer;
     private GLSurfaceView mGLView;
 
+    private TangoXyzIjData mDepthData;
     private TextView mDeltaTextView;
     private TextView mPoseCountTextView;
     private TextView mPoseTextView;
@@ -76,6 +80,7 @@ public class PointCloudActivity extends Activity implements OnClickListener {
     private Button mFirstPersonButton;
     private Button mThirdPersonButton;
     private Button mTopDownButton;
+    private Button mSaveButton;
 
     private int count;
     private int mPreviousPoseStatus;
@@ -114,6 +119,9 @@ public class PointCloudActivity extends Activity implements OnClickListener {
         mFirstPersonButton.setOnClickListener(this);
         mThirdPersonButton = (Button) findViewById(R.id.third_person_button);
         mThirdPersonButton.setOnClickListener(this);
+        mSaveButton = (Button) findViewById((R.id.save));
+        mSaveButton.setOnClickListener(this);
+
         mTopDownButton = (Button) findViewById(R.id.top_down_button);
         mTopDownButton.setOnClickListener(this);
         mTango = new Tango(this);
@@ -205,24 +213,66 @@ public class PointCloudActivity extends Activity implements OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-        case R.id.first_person_button:
-            mRenderer.setFirstPersonView();
-            break;
-        case R.id.third_person_button:
-            mRenderer.setThirdPersonView();
-            break;
-        case R.id.top_down_button:
-            mRenderer.setTopDownView();
-            break;
-        default:
-            Log.w(TAG, "Unrecognized button click.");
-            return;
+            case R.id.first_person_button:
+                mRenderer.setFirstPersonView();
+                break;
+            case R.id.third_person_button:
+                mRenderer.setThirdPersonView();
+                break;
+            case R.id.top_down_button:
+                mRenderer.setTopDownView();
+                break;
+            case R.id.save:
+                savePointCloud();
+                break;
+            default:
+                Log.w(TAG, "Unrecognized button click.");
+                return;
         }
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         return mRenderer.onTouchEvent(event);
+    }
+
+    private void savePointCloud() {
+        String filename = String.valueOf(mDepthData.timestamp) + ".csv";
+        final File externalFilesDir = getApplicationContext().getExternalFilesDir("PointCloud");
+        externalFilesDir.mkdirs();
+        File filePath = new File(
+                externalFilesDir,
+                filename);
+        FileWriter fileWriter = null;
+        try {
+
+            fileWriter = new FileWriter(filePath);
+            final DecimalFormat threeDec = new DecimalFormat("0.000");
+            final String separator = ",";
+            for (int i = 0; i < mDepthData.xyzCount; i += 3) {
+                //provide the index of where the point was found
+                fileWriter.write(String.valueOf(i / 3));
+                fileWriter.write(separator);
+                //write x,y,z
+                fileWriter.write(threeDec.format(mDepthData.xyz.get(i)));
+                fileWriter.write(separator);
+                fileWriter.write(threeDec.format(mDepthData.xyz.get(i + 1)));
+                fileWriter.write(separator);
+                fileWriter.write(threeDec.format(mDepthData.xyz.get(i + 2)));
+                //newline separates points
+                fileWriter.write(System.lineSeparator());
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } finally {
+            if (fileWriter != null) {
+                try {
+                    fileWriter.close();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
     }
 
     private void setUpExtrinsics() {
@@ -278,7 +328,7 @@ public class PointCloudActivity extends Activity implements OnClickListener {
                     }
                     count++;
                     mPreviousPoseStatus = pose.statusCode;
-                    if(!mRenderer.isValid()){
+                    if (!mRenderer.isValid()) {
                         return;
                     }
                     mRenderer.getModelMatCalculator().updateModelMatrix(
@@ -293,24 +343,25 @@ public class PointCloudActivity extends Activity implements OnClickListener {
                 // render loop doesn't interfere while onXYZijAvailable callback is updating
                 // the point cloud data.
                 synchronized (depthLock) {
+                    mDepthData = xyzIj;
                     mCurrentTimeStamp = (float) xyzIj.timestamp;
                     mPointCloudFrameDelta = (mCurrentTimeStamp - mXyIjPreviousTimeStamp)
                             * SECS_TO_MILLISECS;
                     mXyIjPreviousTimeStamp = mCurrentTimeStamp;
                     try {
                         TangoPoseData pointCloudPose = mTango.getPoseAtTime(mCurrentTimeStamp,
-                             framePairs.get(0));
+                                framePairs.get(0));
                         mPointCount = xyzIj.xyzCount;
-                        if(!mRenderer.isValid()){
+                        if (!mRenderer.isValid()) {
                             return;
                         }
                         mRenderer.getPointCloud().UpdatePoints(xyzIj.xyz);
                         mRenderer.getModelMatCalculator().updatePointCloudModelMatrix(
-                                        pointCloudPose.getTranslationAsFloats(),
-                                        pointCloudPose.getRotationAsFloats());
+                                pointCloudPose.getTranslationAsFloats(),
+                                pointCloudPose.getRotationAsFloats());
                         mRenderer.getPointCloud().setModelMatrix(
                                 mRenderer.getModelMatCalculator().getPointCloudModelMatrixCopy());
-                      } catch (TangoErrorException e) {
+                    } catch (TangoErrorException e) {
                         Toast.makeText(getApplicationContext(), R.string.TangoError,
                                 Toast.LENGTH_SHORT).show();
                     } catch (TangoInvalidException e) {
@@ -390,7 +441,7 @@ public class PointCloudActivity extends Activity implements OnClickListener {
                                             + threeDec.format(mPointCloudFrameDelta));
                                     mAverageZTextView.setText(""
                                             + threeDec.format(mRenderer.getPointCloud()
-                                                    .getAverageZ()));
+                                            .getAverageZ()));
                                 }
                             }
                         });

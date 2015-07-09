@@ -420,4 +420,20 @@
         android:layout_alignTop="@+id/saveAdf"
         android:layout_toEndOf="@+id/markWaypoint"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/depth"
+        android:id="@+id/depthLabel"
+        android:layout_below="@+id/guidanceLabel"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:id="@+id/depth"
+        android:layout_width="399dp"
+        android:layout_height="wrap_content"
+        android:text="@string/na"
+        android:layout_below="@+id/guidance"
+        android:layout_alignStart="@+id/guidance"/>
+
 </RelativeLayout>
