@@ -87,6 +87,8 @@
     <orderEntry type="library" exported="" name="commons-core-46-SNAPSHOT" level="project" />
     <orderEntry type="library" exported="" name="jts-1.13" level="project" />
     <orderEntry type="library" exported="" name="commons-lang3-3.4" level="project" />
+    <orderEntry type="library" exported="" name="robot-map-46-SNAPSHOT" level="project" />
+    <orderEntry type="library" exported="" name="commons-jts-46-SNAPSHOT" level="project" />
     <orderEntry type="library" exported="" name="jsr305-3.0.0" level="project" />
     <orderEntry type="library" exported="" name="guava-18.0" level="project" />
     <orderEntry type="module" module-name="TangoUtils" exported="" />

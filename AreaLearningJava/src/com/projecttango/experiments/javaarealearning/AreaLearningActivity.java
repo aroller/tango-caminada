@@ -30,11 +30,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.aawhere.jts.map.MapService;
-import com.aawhere.jts.map.place.NavigationInstructions;
-import com.aawhere.jts.map.place.Place;
-import com.aawhere.jts.map.place.PlaceNavigator;
+import com.aawhere.robot.map.MapService;
+import com.aawhere.robot.map.place.NavigationInstructions;
+import com.aawhere.robot.map.place.Place;
+import com.aawhere.robot.map.place.PlaceNavigator;
 import com.aawhere.measure.QuaternionEulerAngles;
+import com.aawhere.robot.map.place.RouteNavigator;
 import com.aawhere.tango.TangoDepthCalculator;
 import com.aawhere.tango.TangoUtil;
 import com.aawhere.tango.jts.TangoJtsUtil;
@@ -140,7 +141,7 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
     /**
      * Provides guidance to get to a destination.
      */
-    private PlaceNavigator navigator;
+    private RouteNavigator navigator;
 
     /**
      * the depth of the objects in the view of the device.
@@ -243,7 +244,7 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
             mSaveAdf.setVisibility(View.VISIBLE);
             mSaveAdf.setOnClickListener(this);
         }
-        mConfig.putBoolean(TangoConfig.KEY_BOOLEAN_DEPTH,true);
+        mConfig.putBoolean(TangoConfig.KEY_BOOLEAN_DEPTH, true);
         //don't show until coordinates are available once localized
         mMarkWaypoint.setVisibility(View.INVISIBLE);
         mMarkWaypoint.setOnClickListener(this);
@@ -448,7 +449,7 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
     @Override
     public void onWaypointName(String name, Coordinate coordinate) {
         Log.i(TAG,
-                "Waypiont named " + name + " at " + coordinate);
+                "Waypiont " + name + " at " + coordinate + " added to " + mapService.places());
         mapService.place(name, coordinate);
     }
 
@@ -462,7 +463,8 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
     public void onGo(String destinationName) {
         final Place place = this.mapService.place(destinationName);
         if (place != null) {
-            this.navigator = PlaceNavigator.builder().destination(place).build();
+            this.navigator = RouteNavigator.builder().finalDestination(place).places(
+                    this.mapService.places()).build();
 
         }
     }
@@ -568,15 +570,16 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
                     mAwarenessTextView.setText(
                             getString(R.string.awareness_memory_valid, locationName));
 
-                    if (navigator != null) {
+                    if (navigator != null && this.depthData != null) {
                         final QuaternionEulerAngles eulerAngles = TangoUtil.headingAngles(
                                 devicePoseFromMemory);
                         final NavigationInstructions instruction = navigator.instruction(
-                                currentLocation, eulerAngles.heading());
+                                currentLocation, eulerAngles.heading(),
+                                depthData.distanceInMeters());
                         final String instructionText = instruction.instruction().name();
                         final String bearing = threeDec.format(instruction.bearing());
                         final String distance = threeDec.format(instruction.distance());
-                        final String placeName = navigator.destination().name();
+                        final String placeName = instruction.destination().name();
                         String guidanceText = getString(R.string.guidance_instruction,
                                 instructionText, bearing, distance, placeName
                         );
@@ -624,7 +627,8 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
                 distance = getString(R.string.na);
             }
             mDepthTextView.setText(
-                    getString(R.string.depth_message, distance, depthData.numberOfPoints().toString()));
+                    getString(R.string.depth_message, distance,
+                            depthData.numberOfPoints().toString()));
         }
     }
 
