@@ -93,6 +93,7 @@ public class ALStartActivity extends Activity implements View.OnClickListener {
         mIsLoadADF = mLoadADFToggleButton.isChecked();
         startADIntent.putExtra(USE_AREA_LEARNING, mIsUseAreaLearning);
         startADIntent.putExtra(LOAD_ADF, mIsLoadADF);
+        startADIntent.putExtra(USE_AUTO, mIsAuto);
         startActivity(startADIntent);
     }
 

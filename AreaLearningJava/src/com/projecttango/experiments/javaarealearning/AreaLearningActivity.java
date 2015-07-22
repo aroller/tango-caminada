@@ -31,10 +31,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aawhere.robot.map.MapService;
+import com.aawhere.robot.map.Navigator;
 import com.aawhere.robot.map.place.NavigationInstructions;
 import com.aawhere.robot.map.place.Place;
+import com.aawhere.robot.map.place.PlaceDiscovery;
 import com.aawhere.robot.map.place.PlaceNavigator;
 import com.aawhere.measure.QuaternionEulerAngles;
+import com.aawhere.robot.map.place.PlaceUtil;
 import com.aawhere.robot.map.place.RouteNavigator;
 import com.aawhere.tango.TangoDepthCalculator;
 import com.aawhere.tango.TangoUtil;
@@ -141,7 +144,7 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
     /**
      * Provides guidance to get to a destination.
      */
-    private RouteNavigator navigator;
+    private Navigator navigator;
 
     /**
      * the depth of the objects in the view of the device.
@@ -227,15 +230,20 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
         mIsRelocalized = false;
 
         Intent intent = getIntent();
-        mIsLearningMode = intent.getBooleanExtra(ALStartActivity.USE_AREA_LEARNING, false);
+        //auto triggers both learning and localizing
         mIsAutoMode = intent.getBooleanExtra(ALStartActivity.USE_AUTO, false);
-        mIsConstantSpaceRelocalize = intent.getBooleanExtra(ALStartActivity.LOAD_ADF, false);
+        mIsLearningMode = intent.getBooleanExtra(ALStartActivity.USE_AREA_LEARNING,
+                false) || mIsAutoMode;
+        mIsConstantSpaceRelocalize = intent.getBooleanExtra(ALStartActivity.LOAD_ADF,
+                false) || mIsAutoMode;
         setTangoConfig();
         mPoses = new TangoPoseData[3];
     }
 
     private void setTangoConfig() {
         mConfig = mTango.getConfig(TangoConfig.CONFIG_TYPE_CURRENT);
+
+
         // Check if learning mode
         if (mIsLearningMode) {
             // Set learning mode to config.
@@ -251,12 +259,7 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
         mGo.setVisibility(View.INVISIBLE);
         mGo.setOnClickListener(this);
 
-        if (mIsAutoMode) {
-            // Set learning mode to config.
-            mConfig.putBoolean(TangoConfig.KEY_BOOLEAN_LEARNINGMODE, true);
-            //the save button is not necessary since saving will be automatic
-            mSaveAdf.setOnClickListener(this);
-        }
+
         // Check for Load ADF/Constant Space relocalization mode
         if (mIsConstantSpaceRelocalize) {
             ArrayList<String> fullUUIDList = new ArrayList<String>();
@@ -554,6 +557,12 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
                                 mAdfMetadata.get(TangoAreaDescriptionMetaData.KEY_UUID));
                         final File filesDir = getApplicationContext().getFilesDir();
                         mapService = new MapService(uuid, filesDir);
+
+                        if (mIsAutoMode) {
+                            this.navigator = PlaceDiscovery.builder().places(
+                                    PlaceUtil.idMap(mapService.places())).geometryFactory(
+                                    mapService.geometryFactory()).build();
+                        }
                     }
 
                     final Coordinate currentLocation = TangoJtsUtil.coordinate(
@@ -577,9 +586,12 @@ public class AreaLearningActivity extends Activity implements View.OnClickListen
                                 currentLocation, eulerAngles.heading(),
                                 depthData.distanceInMeters());
                         final String instructionText = instruction.instruction().name();
-                        final String bearing = threeDec.format(instruction.bearing());
-                        final String distance = threeDec.format(instruction.distance());
-                        final String placeName = instruction.destination().name();
+                        final String unknownText = getString(R.string.na);
+                        final String bearing = (instruction.bearing() != null) ? threeDec.format(
+                                instruction.bearing()) : unknownText;
+                        final String distance = (instruction.bearing() != null) ? threeDec.format(
+                                instruction.distance()) : unknownText;
+                        final String placeName = (instruction.bearing() != null) ? instruction.destination().name() : unknownText;
                         String guidanceText = getString(R.string.guidance_instruction,
                                 instructionText, bearing, distance, placeName
                         );

@@ -78,13 +78,13 @@
     <string name="pose_invalid">"invalid"</string>
     <string name="pose_unknown">"unknown"</string>
     <string name="latest_adf_is">", Latest ADF is: "</string>
-    <string name="awareness_learning">I can remember what I see if you save.</string>
+    <string name="awareness_learning">I can remember what I ∂see if you save.</string>
     <string name="awareness_memory">I\'m trying to remember if I\'ve been here before.</string>
     <string name="awareness_memory_learning">If I\'ve been here before I can add to my memory.</string>
     <string name="awareness_memory_valid">I am near %1$s.</string>
     <string name="awareness_memory_invalid">I don\'t recognize this place.</string>
     <string name="awareness_memory_unknown">I am having difficulties remembering.</string>
-    <string name="awareness_invalid">I\'m not able to recognize this place since I am not using my memory.</string>
+    <string name="awareness_invalid">I\'m not using my memory nor learning.</string>
     <string name="guidance_instruction">%1$s bearing %2$s for %3$s to %4$s.</string>
     <string name="depth_message">%1$s meters at center using %2$s points.</string>
 
